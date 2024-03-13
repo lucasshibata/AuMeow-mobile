@@ -1,0 +1,293 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/pink_bg"
+    tools:context=".PaginaDeNavegacao">
+
+    <TextView
+        android:id="@+id/txt_principal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:shadowColor="@color/material_dynamic_neutral50"
+        android:shadowDx="2"
+        android:shadowDy="5"
+        android:shadowRadius="5"
+        android:text="Como podemos te ajudar hoje?"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.05" />
+
+    <ImageView
+        android:id="@+id/image_logo"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_principal"
+        app:srcCompat="@drawable/logo_img" />
+
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/image_logo">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/LayoutLinear1"
+                android:layout_width="match_parent"
+                android:layout_height="160dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <Space
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+                <Button
+                    android:id="@+id/adocao_btn"
+                    android:layout_width="180dp"
+                    android:layout_height="140dp"
+                    android:backgroundTint="@color/pink_btn"
+                    android:fontFamily="@font/inter"
+                    android:gravity="bottom|center"
+                    android:shadowColor="@color/black"
+                    android:text="Adoção"
+                    android:textAlignment="gravity"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:cornerRadius="15dp"
+                    app:icon="@drawable/paw_img"
+                    app:iconGravity="top"
+                    app:iconSize="80dp"
+                    app:iconTint="@color/black" />
+
+                <Space
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+                <Button
+                    android:id="@+id/denuncia_btn"
+                    android:layout_width="180dp"
+                    android:layout_height="140dp"
+                    android:backgroundTint="@color/pink_btn"
+                    android:fontFamily="@font/inter"
+                    android:gravity="bottom|center"
+                    android:text="Denúncia"
+                    android:textAlignment="gravity"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:cornerRadius="15dp"
+                    app:icon="@drawable/megaphone_img"
+                    app:iconGravity="top"
+                    app:iconSize="80dp"
+                    app:iconTint="@color/black" />
+
+                <Space
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/LayoutLinear2"
+                android:layout_width="match_parent"
+                android:layout_height="160dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <Space
+                    android:id="@+id/space"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+                <Button
+                    android:id="@+id/banho_tosa_btn"
+                    android:layout_width="180dp"
+                    android:layout_height="140dp"
+                    android:backgroundTint="@color/pink_btn"
+                    android:fontFamily="@font/inter"
+                    android:gravity="bottom|center"
+                    android:text="Banho e Tosa"
+                    android:textAlignment="gravity"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:cornerRadius="15dp"
+                    app:icon="@drawable/banho_tosa_img"
+                    app:iconGravity="top"
+                    app:iconSize="80dp"
+                    app:iconTint="@color/black" />
+
+                <Space
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+                <Button
+                    android:id="@+id/vacinacao_btn"
+                    android:layout_width="180dp"
+                    android:layout_height="140dp"
+                    android:backgroundTint="@color/pink_btn"
+                    android:fontFamily="@font/inter"
+                    android:gravity="bottom|center"
+                    android:text="Vacinação"
+                    android:textAlignment="gravity"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:cornerRadius="15dp"
+                    app:icon="@drawable/vacinacao_img"
+                    app:iconGravity="top"
+                    app:iconSize="80dp"
+                    app:iconTint="@color/black" />
+
+                <Space
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/LayoutLinear3"
+                android:layout_width="match_parent"
+                android:layout_height="160dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <Space
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+                <Button
+                    android:id="@+id/adestrar_btn"
+                    android:layout_width="180dp"
+                    android:layout_height="140dp"
+                    android:backgroundTint="@color/pink_btn"
+                    android:fontFamily="@font/inter"
+                    android:gravity="bottom|center"
+                    android:text="Adestrar"
+                    android:textAlignment="gravity"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:cornerRadius="15dp"
+                    app:icon="@drawable/adestramento_img"
+                    app:iconGravity="top"
+                    app:iconSize="80dp"
+                    app:iconTint="@color/black" />
+
+                <Space
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+                <Button
+                    android:id="@+id/hospedagem_btn"
+                    android:layout_width="180dp"
+                    android:layout_height="140dp"
+                    android:backgroundTint="@color/pink_btn"
+                    android:fontFamily="@font/inter"
+                    android:gravity="bottom|center"
+                    android:text="Hospedagem"
+                    android:textAlignment="gravity"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:cornerRadius="15dp"
+                    app:icon="@drawable/hospedagem_img"
+                    app:iconGravity="top"
+                    app:iconSize="80dp"
+                    app:iconTint="@color/black" />
+
+                <Space
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/LayoutLinear4"
+                android:layout_width="match_parent"
+                android:layout_height="160dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <Space
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+                <Button
+                    android:id="@+id/agenda_btn"
+                    android:layout_width="180dp"
+                    android:layout_height="140dp"
+                    android:backgroundTint="@color/pink_btn"
+                    android:fontFamily="@font/inter"
+                    android:gravity="bottom|center"
+                    android:text="Agenda"
+                    android:textAlignment="gravity"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:cornerRadius="15dp"
+                    app:icon="@drawable/agenda_img"
+                    app:iconGravity="top"
+                    app:iconSize="80dp"
+                    app:iconTint="@color/black" />
+
+                <Space
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+                <Button
+                    android:id="@+id/feedback_btn"
+                    android:layout_width="180dp"
+                    android:layout_height="140dp"
+                    android:backgroundTint="@color/pink_btn"
+                    android:fontFamily="@font/inter"
+                    android:gravity="bottom|center"
+                    android:text="Feedback"
+                    android:textAlignment="gravity"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:cornerRadius="15dp"
+                    app:icon="@drawable/feedback_img"
+                    app:iconGravity="top"
+                    app:iconSize="80dp"
+                    app:iconTint="@color/black" />
+
+                <Space
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
