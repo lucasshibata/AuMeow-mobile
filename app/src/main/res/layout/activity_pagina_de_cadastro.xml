@@ -8,7 +8,7 @@
     tools:context=".PaginaDeCadastro">
 
     <LinearLayout
-        android:layout_width="380dp"
+        android:layout_width="350dp"
         android:layout_height="585dp"
         android:background="@color/pink_bg"
         android:gravity="center"
