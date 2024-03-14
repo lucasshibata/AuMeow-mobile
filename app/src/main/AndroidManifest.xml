@@ -15,6 +15,9 @@
         android:theme="@style/Theme.AuMeow"
         tools:targetApi="31">
         <activity
+            android:name=".PaginaDeCadastro"
+            android:exported="false" />
+        <activity
             android:name=".PaginaDeFeedback"
             android:exported="false" />
         <activity
