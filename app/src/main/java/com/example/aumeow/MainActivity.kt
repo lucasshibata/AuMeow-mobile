@@ -18,6 +18,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val btn_entrar = findViewById<Button>(R.id.btn_entrar)
+        val btn_cadastro = findViewById<Button>(R.id.btn_cadastrar)
         val input_email = findViewById<EditText>(R.id.input_email)
         val input_senha = findViewById<EditText>(R.id.input_senha)
 
@@ -57,6 +58,11 @@ class MainActivity : AppCompatActivity() {
                 e.printStackTrace()
             }
 
+        }
+
+        btn_cadastro.setOnClickListener {
+            val ir_para_cadastro = Intent(this, PaginaDeCadastro::class.java)
+            startActivity(ir_para_cadastro)
         }
     }
 }
