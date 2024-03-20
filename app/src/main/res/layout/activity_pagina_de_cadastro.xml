@@ -9,7 +9,7 @@
 
     <LinearLayout
         android:layout_width="350dp"
-        android:layout_height="585dp"
+        android:layout_height="670dp"
         android:background="@color/pink_bg"
         android:gravity="center"
         android:orientation="vertical"
@@ -28,7 +28,7 @@
         <ImageView
             android:id="@+id/imageView"
             android:layout_width="match_parent"
-            android:layout_height="134dp"
+            android:layout_height="110dp"
             app:srcCompat="@drawable/logo_img" />
 
         <TextView
@@ -40,6 +40,30 @@
             android:textAlignment="center"
             android:textColor="@color/black"
             android:textSize="24sp" />
+
+        <LinearLayout
+            android:layout_width="330dp"
+            android:layout_height="90dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView14"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Nome Completo:"
+                android:textColor="@color/black"
+                android:textSize="22sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/txt_campo_nome"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:ems="10"
+                android:hint="Nome"
+                android:inputType="text"
+                android:textColorHint="@color/material_dynamic_neutral40" />
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="330dp"
@@ -57,7 +81,7 @@
                 android:textStyle="bold" />
 
             <EditText
-                android:id="@+id/editTextTextEmailAddress"
+                android:id="@+id/txt_campo_email"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:ems="10"
@@ -82,7 +106,7 @@
                 android:textStyle="bold" />
 
             <EditText
-                android:id="@+id/editTextText"
+                android:id="@+id/txt_campo_senha"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:ems="10"
@@ -117,11 +141,12 @@
         </LinearLayout>
 
         <Button
-            android:id="@+id/button3"
+            android:id="@+id/btn_cadastro"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_margin="5dp"
-            android:text="Cadastrar" />
+            android:text="Cadastrar"
+            android:textSize="16sp" />
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
