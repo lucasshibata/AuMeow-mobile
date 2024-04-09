@@ -37,7 +37,7 @@ class PaginaDeNavegacao : AppCompatActivity() {
             startActivity(ir_para_vacinacao)
         }
         btn_adestracao.setOnClickListener {
-            val ir_para_adestracao = Intent(this, PaginaDeAdestracao::class.java)
+            val ir_para_adestracao = Intent(this, PaginaDeAdestramento::class.java)
             startActivity(ir_para_adestracao)
         }
         btn_hospedagem.setOnClickListener {
@@ -45,7 +45,7 @@ class PaginaDeNavegacao : AppCompatActivity() {
             startActivity(ir_para_hospedagem)
         }
         btn_agendamento.setOnClickListener {
-            val ir_para_agendamento = Intent(this, PaginaDeAgendamento::class.java)
+            val ir_para_agendamento = Intent(this, PaginaDeAgenda::class.java)
             startActivity(ir_para_agendamento)
         }
         btn_feedback.setOnClickListener {

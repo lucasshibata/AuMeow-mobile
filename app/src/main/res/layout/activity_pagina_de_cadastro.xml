@@ -19,8 +19,8 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:id="@+id/voltar_img"
-            android:layout_width="100dp"
+            android:id="@+id/voltar_img_1"
+            android:layout_width="70dp"
             android:layout_height="50dp"
             android:layout_gravity="start"
             app:srcCompat="@drawable/baseline_arrow_back_24" />

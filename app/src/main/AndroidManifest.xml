@@ -21,13 +21,13 @@
             android:name=".PaginaDeFeedback"
             android:exported="false" />
         <activity
-            android:name=".PaginaDeAgendamento"
+            android:name=".PaginaDeAgenda"
             android:exported="false" />
         <activity
             android:name=".PaginaDeHospedagem"
             android:exported="false" />
         <activity
-            android:name=".PaginaDeAdestracao"
+            android:name=".PaginaDeAdestramento"
             android:exported="false" />
         <activity
             android:name=".PaginaDeVacinacao"
