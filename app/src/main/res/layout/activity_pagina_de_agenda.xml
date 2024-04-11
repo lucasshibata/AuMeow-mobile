@@ -18,18 +18,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout3" />
 
-    <CalendarView
-        android:id="@+id/calendarView"
-        android:layout_width="371dp"
-        android:layout_height="379dp"
-        android:dateTextAppearance="@style/TextAppearance.AppCompat.Large"
-        android:focusedMonthDateColor="@color/design_default_color_error"
-        android:weekNumberColor="@color/black"
-        android:weekSeparatorLineColor="@color/design_default_color_primary_dark"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView7" />
-
     <LinearLayout
         android:id="@+id/linearLayout3"
         android:layout_width="match_parent"
@@ -46,4 +34,5 @@
             android:layout_height="50dp"
             app:srcCompat="@drawable/baseline_arrow_back_24" />
     </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
