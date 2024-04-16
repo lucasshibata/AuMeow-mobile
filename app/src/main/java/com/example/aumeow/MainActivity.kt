@@ -21,6 +21,13 @@ class MainActivity : AppCompatActivity() {
         val btn_cadastro = findViewById<Button>(R.id.btn_cadastrar)
         val input_email = findViewById<EditText>(R.id.input_email)
         val input_senha = findViewById<EditText>(R.id.input_senha)
+        val acessar_direto = findViewById<Button>(R.id.acessar_direto)
+        val esqueci_senha = findViewById<TextView>(R.id.txt_recuperacao_senha)
+
+        esqueci_senha.setOnClickListener {
+            val ir_para_recuperacao = Intent(this, PaginaDeRecuperacaoDeSenha::class.java)
+            startActivity(ir_para_recuperacao)
+        }
 
         btn_entrar.setOnClickListener {
             try{
@@ -58,6 +65,11 @@ class MainActivity : AppCompatActivity() {
                 e.printStackTrace()
             }
 
+        }
+
+        acessar_direto.setOnClickListener {
+            val navegar_principal = Intent(this, PaginaDeNavegacao::class.java)
+            startActivity(navegar_principal)
         }
 
         btn_cadastro.setOnClickListener {
