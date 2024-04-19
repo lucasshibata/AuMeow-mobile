@@ -4,4 +4,7 @@
     <color name="white">#FFFFFFFF</color>
     <color name="pink_bg">#F4CDF3</color>
     <color name="pink_btn">#E4A4E5</color>
+    <color name="cor_linha_txt">#DB00FF</color>
+    <color name="cor_botão">#FD9EFF</color>
+    <color name="cor_borda_botão">#FC79FF</color>
 </resources>

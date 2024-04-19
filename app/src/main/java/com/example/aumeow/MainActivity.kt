@@ -1,6 +1,7 @@
 package com.example.aumeow
 
 import android.content.Intent
+import android.content.res.ColorStateList
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.ContactsContract.CommonDataKinds.Email
@@ -11,6 +12,8 @@ import android.widget.EditText
 import android.widget.RadioButton
 import android.widget.RadioGroup
 import android.widget.TextView
+import androidx.core.content.ContextCompat
+import androidx.core.view.ViewCompat
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,6 +26,9 @@ class MainActivity : AppCompatActivity() {
         val input_senha = findViewById<EditText>(R.id.input_senha)
         val acessar_direto = findViewById<Button>(R.id.acessar_direto)
         val esqueci_senha = findViewById<TextView>(R.id.txt_recuperacao_senha)
+
+        input_email.setBackgroundTintList(ContextCompat.getColorStateList(this, R.color.cor_linha_txt))
+        input_senha.setBackgroundTintList(ContextCompat.getColorStateList(this, R.color.cor_linha_txt))
 
         esqueci_senha.setOnClickListener {
             val ir_para_recuperacao = Intent(this, PaginaDeRecuperacaoDeSenha::class.java)
