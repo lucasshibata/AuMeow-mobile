@@ -29,7 +29,6 @@ class MainActivity : AppCompatActivity() {
 
         input_email.setBackgroundTintList(ContextCompat.getColorStateList(this, R.color.cor_linha_txt))
         input_senha.setBackgroundTintList(ContextCompat.getColorStateList(this, R.color.cor_linha_txt))
-
         esqueci_senha.setOnClickListener {
             val ir_para_recuperacao = Intent(this, PaginaDeRecuperacaoDeSenha::class.java)
             startActivity(ir_para_recuperacao)

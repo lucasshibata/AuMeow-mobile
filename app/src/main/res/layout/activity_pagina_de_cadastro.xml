@@ -10,7 +10,7 @@
     <LinearLayout
         android:layout_width="350dp"
         android:layout_height="670dp"
-        android:background="@color/pink_bg"
+        android:background="@drawable/pink_bg_gradient"
         android:gravity="center"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -50,6 +50,7 @@
                 android:id="@+id/textView14"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/inter"
                 android:text="Nome Completo:"
                 android:textColor="@color/black"
                 android:textSize="22sp"
@@ -75,6 +76,7 @@
                 android:id="@+id/textView10"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/inter"
                 android:text="Email:"
                 android:textColor="@color/black"
                 android:textSize="22sp"
@@ -100,6 +102,7 @@
                 android:id="@+id/textView11"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/inter"
                 android:text="Senha:"
                 android:textColor="@color/black"
                 android:textSize="22sp"
@@ -125,13 +128,14 @@
                 android:id="@+id/textView12"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/inter"
                 android:text="Repita a senha:"
                 android:textColor="@color/black"
                 android:textSize="22sp"
                 android:textStyle="bold" />
 
             <EditText
-                android:id="@+id/editTextText2"
+                android:id="@+id/txt_repita_senha"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:ems="10"
@@ -145,8 +149,11 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_margin="5dp"
+            android:backgroundTint="@color/cor_botão"
             android:text="Cadastrar"
-            android:textSize="16sp" />
+            android:textSize="16sp"
+            app:strokeColor="@color/cor_borda_botão"
+            app:strokeWidth="2dp" />
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

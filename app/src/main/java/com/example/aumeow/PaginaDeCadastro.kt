@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
+import androidx.core.content.ContextCompat
 
 
 class PaginaDeCadastro : AppCompatActivity() {
@@ -18,6 +19,12 @@ class PaginaDeCadastro : AppCompatActivity() {
         val nomeEditText = findViewById<EditText>(R.id.txt_campo_nome)
         val emailEditText = findViewById<EditText>(R.id.txt_campo_email)
         val senhaEditText = findViewById<EditText>(R.id.txt_campo_senha)
+        val repitasenhaEditText = findViewById<EditText>(R.id.txt_repita_senha)
+
+        nomeEditText.setBackgroundTintList(ContextCompat.getColorStateList(this, R.color.cor_linha_txt))
+        emailEditText.setBackgroundTintList(ContextCompat.getColorStateList(this, R.color.cor_linha_txt))
+        senhaEditText.setBackgroundTintList(ContextCompat.getColorStateList(this, R.color.cor_linha_txt))
+        repitasenhaEditText.setBackgroundTintList(ContextCompat.getColorStateList(this, R.color.cor_linha_txt))
 
         btn_voltar.setOnClickListener {
             val ir_para_inicio = Intent(this, MainActivity::class.java)

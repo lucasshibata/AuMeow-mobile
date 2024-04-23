@@ -108,6 +108,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:text="Cadastrar"
+            android:textSize="16sp"
             app:backgroundTint="@color/cor_botão"
             app:strokeColor="@color/cor_borda_botão"
             app:strokeWidth="2dp" />
@@ -118,6 +119,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:text="Entrar"
+            android:textSize="16sp"
             app:backgroundTint="@color/cor_botão"
             app:strokeColor="@color/cor_borda_botão"
             app:strokeWidth="2dp" />
@@ -128,6 +130,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:text="acesso direto"
+            android:textSize="16sp"
             app:backgroundTint="@color/cor_botão"
             app:strokeColor="@color/cor_borda_botão"
             app:strokeWidth="2dp" />
