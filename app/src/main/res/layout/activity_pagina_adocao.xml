@@ -37,8 +37,10 @@
         android:id="@+id/textView30"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/fundo_arredondado_roxo"
         android:text="Animais resgatados"
         android:textAlignment="center"
+        android:textColor="@color/black"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -46,12 +48,12 @@
 
     <Space
         android:layout_width="match_parent"
-        android:layout_height="21dp" />
+        android:layout_height="20dp" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/pink_btn"
+        android:background="@drawable/fundo_arredondado_roxo"
         android:orientation="vertical"
         android:padding="20dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -62,7 +64,11 @@
             android:id="@+id/imageView5"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            tools:srcCompat="@tools:sample/avatars" />
+            app:srcCompat="@drawable/fred_img_exemple" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="20dp" />
 
         <LinearLayout
             android:id="@+id/campo1"
@@ -72,19 +78,27 @@
 
             <TextView
                 android:id="@+id/textView22"
-                android:layout_width="wrap_content"
+                android:layout_width="60dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:gravity="center"
-                android:text="TextView" />
+                android:gravity="end"
+                android:text="Nome:"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+
+            <Space
+                android:layout_width="10dp"
+                android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/textView23"
-                android:layout_width="wrap_content"
+                android:layout_width="60dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:gravity="center"
-                android:text="TextView" />
+                android:gravity="start"
+                android:text="Fred"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
         </LinearLayout>
 
         <LinearLayout
@@ -95,17 +109,27 @@
 
             <TextView
                 android:id="@+id/textView24"
-                android:layout_width="wrap_content"
+                android:layout_width="60dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="TextView" />
+                android:gravity="end"
+                android:text="Idade:"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+
+            <Space
+                android:layout_width="10dp"
+                android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/textView25"
-                android:layout_width="wrap_content"
+                android:layout_width="60dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="TextView" />
+                android:gravity="start"
+                android:text="10"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
         </LinearLayout>
 
         <LinearLayout
@@ -116,17 +140,27 @@
 
             <TextView
                 android:id="@+id/textView26"
-                android:layout_width="wrap_content"
+                android:layout_width="60dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="TextView" />
+                android:gravity="end"
+                android:text="Sexo:"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+
+            <Space
+                android:layout_width="10dp"
+                android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/textView27"
-                android:layout_width="wrap_content"
+                android:layout_width="60dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="TextView" />
+                android:gravity="start"
+                android:text="Masculino"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
         </LinearLayout>
 
         <LinearLayout
@@ -137,17 +171,27 @@
 
             <TextView
                 android:id="@+id/textView28"
-                android:layout_width="wrap_content"
+                android:layout_width="60dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="TextView" />
+                android:gravity="end"
+                android:text="Raça:"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+
+            <Space
+                android:layout_width="10dp"
+                android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/textView29"
-                android:layout_width="wrap_content"
+                android:layout_width="60dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="TextView" />
+                android:gravity="start"
+                android:text="SRD"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
         </LinearLayout>
 
     </LinearLayout>
