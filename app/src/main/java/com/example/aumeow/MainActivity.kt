@@ -1,86 +1,107 @@
 package com.example.aumeow
 
 import android.content.Intent
-import android.content.res.ColorStateList
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.provider.ContactsContract.CommonDataKinds.Email
+import android.text.BoringLayout
 import android.util.Log
-import android.view.View
-import android.widget.Button
-import android.widget.EditText
-import android.widget.RadioButton
-import android.widget.RadioGroup
-import android.widget.TextView
+import android.widget.Toast
 import androidx.core.content.ContextCompat
-import androidx.core.view.ViewCompat
+import com.example.aumeow.databinding.ActivityMainBinding
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
+import retrofit2.http.Field
+import retrofit2.http.FormUrlEncoded
+import retrofit2.http.POST
+
+private lateinit var binding: ActivityMainBinding
+private val retrofit = Retrofit.Builder()
+    .addConverterFactory(GsonConverterFactory.create())
+    .baseUrl("https://aumeow.000webhostapp.com")
+    .build()
+    .create(MainActivity.enviaUsuario::class.java)
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
 
-        val btn_entrar = findViewById<Button>(R.id.btn_entrar)
-        val btn_cadastro = findViewById<Button>(R.id.btn_cadastrar)
-        val input_email = findViewById<EditText>(R.id.input_email)
-        val input_senha = findViewById<EditText>(R.id.input_senha)
-        val acessar_direto = findViewById<Button>(R.id.acessar_direto)
-        val esqueci_senha = findViewById<TextView>(R.id.txt_recuperacao_senha)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        val view = binding.root
+        setContentView(view)
 
-        input_email.setBackgroundTintList(ContextCompat.getColorStateList(this, R.color.cor_linha_txt))
-        input_senha.setBackgroundTintList(ContextCompat.getColorStateList(this, R.color.cor_linha_txt))
+        binding.inputEmail.setBackgroundTintList(ContextCompat.getColorStateList(this, R.color.cor_linha_txt))
+        binding.inputSenha.setBackgroundTintList(ContextCompat.getColorStateList(this, R.color.cor_linha_txt))
 
-        esqueci_senha.setOnClickListener {
+
+        binding.btnEntrar.setOnClickListener {
+            val usuario = Usuario()
+            usuario.email = binding.inputEmail.text.toString()
+            usuario.senha = binding.inputSenha.text.toString()
+            var permite:Boolean = false
+            permite = chamaAPI(usuario)
+            if (permite){
+                val ir_para_navegacao = Intent(this, PaginaDeNavegacao::class.java)
+                startActivity(ir_para_navegacao)
+            }
+        }
+        binding.txtRecuperacaoSenha.setOnClickListener {
             val ir_para_recuperacao = Intent(this, PaginaDeRecuperacaoDeSenha::class.java)
             startActivity(ir_para_recuperacao)
         }
-
-        btn_entrar.setOnClickListener {
-            try{
-                //criar banco de dados
-                val bancoDados = openOrCreateDatabase("DB_AUMEOW", MODE_PRIVATE, null)
-
-                //criar tabela
-                bancoDados.execSQL("CREATE TABLE IF NOT EXISTS TB_USUARIOS(email VARCHAR, senha VARCHAR)")
-
-                //inserir dados em uma tabela
-                //bancoDados.execSQL("INSERT INTO TB_USUARIOS VALUES ('teste@gmail.com', '6789')")
-
-                val consulta = "SELECT email, senha FROM TB_USUARIOS"
-
-                val cursor = bancoDados.rawQuery(consulta, null)
-
-                //recuperar os indices da nossa tabela
-                val indiceEmail = cursor.getColumnIndex("email")
-                val indiceSenha = cursor.getColumnIndex("senha")
-                cursor.moveToFirst()
-
-                while (cursor != null){
-                    val email = cursor.getString(indiceEmail)
-                    val senha = cursor.getString(indiceSenha)
-                    if (email == input_email.text.toString() && senha == input_senha.text.toString()){
-                        Log.i("Resultado", "tá dando certo")
-                        val navegar_principal = Intent(this, PaginaDeNavegacao::class.java)
-                        startActivity(navegar_principal)
-                    }
-                    Log.i("Resultado", "emai: $email | senha: $senha")
-                    cursor.moveToNext()
-                }
-
-            } catch (e: Exception){
-                e.printStackTrace()
-            }
-
-        }
-
-        acessar_direto.setOnClickListener {
+        binding.acessarDireto.setOnClickListener {
             val navegar_principal = Intent(this, PaginaDeNavegacao::class.java)
             startActivity(navegar_principal)
         }
-
-        btn_cadastro.setOnClickListener {
+        binding.btnCadastrar.setOnClickListener {
             val ir_para_cadastro = Intent(this, PaginaDeCadastro::class.java)
             startActivity(ir_para_cadastro)
         }
     }
+
+    private fun chamaAPI(usuario: Usuario):Boolean {
+        var nextPage = false
+        retrofit.setUsuario(usuario.email, usuario.senha).enqueue(object : Callback<Usuario> {
+            override fun onFailure(call: Call<Usuario>, t: Throwable) {
+                Log.d("Erro: ", t.toString())
+            }
+
+            override fun onResponse(call: Call<Usuario>, response: Response<Usuario>) {
+                if (response.isSuccessful) {
+                    response.body()?.let {
+                        if (response.body()!!.email.equals("vazio")) {
+                            exibeToast(false)
+                        } else {
+                            nextPage = true
+                            exibeToast(true)
+                        }
+                    }
+                }
+            }
+        })
+        return nextPage
+    }
+
+    private fun exibeToast(respostaServidor: Boolean){
+        if(respostaServidor){
+            Toast.makeText(this, "Usuário Autenticado", Toast.LENGTH_LONG).show()
+        }else{
+            Toast.makeText(this, "Usuário ou Senha incorretos", Toast.LENGTH_LONG).show()
+        }
+    }
+    interface enviaUsuario{
+        @FormUrlEncoded
+        @POST("autenticacao_mobile.php")
+        fun setUsuario(
+            @Field("email") email: String,
+            @Field("senha") senha: String
+        ): Call<Usuario>
+    }
+}
+
+class Usuario{
+    lateinit var email: String
+    lateinit var senha: String
 }
