@@ -3,7 +3,6 @@ package com.example.aumeow
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.text.BoringLayout
 import android.util.Log
 import android.widget.Toast
 import androidx.core.content.ContextCompat
@@ -40,12 +39,7 @@ class MainActivity : AppCompatActivity() {
             val usuario = Usuario()
             usuario.email = binding.inputEmail.text.toString()
             usuario.senha = binding.inputSenha.text.toString()
-            var permite:Boolean = false
-            permite = chamaAPI(usuario)
-            if (permite){
-                val ir_para_navegacao = Intent(this, PaginaDeNavegacao::class.java)
-                startActivity(ir_para_navegacao)
-            }
+            chamaAPI(usuario)
         }
         binding.txtRecuperacaoSenha.setOnClickListener {
             val ir_para_recuperacao = Intent(this, PaginaDeRecuperacaoDeSenha::class.java)
@@ -61,8 +55,8 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun chamaAPI(usuario: Usuario):Boolean {
-        var nextPage = false
+    private fun chamaAPI(usuario: Usuario) {
+
         retrofit.setUsuario(usuario.email, usuario.senha).enqueue(object : Callback<Usuario> {
             override fun onFailure(call: Call<Usuario>, t: Throwable) {
                 Log.d("Erro: ", t.toString())
@@ -74,26 +68,26 @@ class MainActivity : AppCompatActivity() {
                         if (response.body()!!.email.equals("vazio")) {
                             exibeToast(false)
                         } else {
-                            nextPage = true
                             exibeToast(true)
                         }
                     }
                 }
             }
         })
-        return nextPage
     }
 
     private fun exibeToast(respostaServidor: Boolean){
         if(respostaServidor){
             Toast.makeText(this, "Usuário Autenticado", Toast.LENGTH_LONG).show()
+            val ir_para_navegacao = Intent(this, PaginaDeNavegacao::class.java)
+            startActivity(ir_para_navegacao)
         }else{
             Toast.makeText(this, "Usuário ou Senha incorretos", Toast.LENGTH_LONG).show()
         }
     }
     interface enviaUsuario{
         @FormUrlEncoded
-        @POST("autenticacao_mobile.php")
+        @POST("/autenticacao_mobile.php")
         fun setUsuario(
             @Field("email") email: String,
             @Field("senha") senha: String

@@ -7,26 +7,34 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
 import androidx.core.content.ContextCompat
+import com.example.aumeow.databinding.ActivityPaginaDeCadastroBinding
+import retrofit2.Call
+import retrofit2.Retrofit
+import retrofit2.http.Field
+import retrofit2.http.FormUrlEncoded
+import retrofit2.http.POST
 
+private lateinit var binding: ActivityPaginaDeCadastroBinding
+private val retrofit = Retrofit.Builder()
+    .baseUrl("https://aumeow.000webhostapp.com")
+    .build()
+    .create(PaginaDeCadastro.recebeUsuario::class.java)
 
 class PaginaDeCadastro : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_pagina_de_cadastro)
+        binding = ActivityPaginaDeCadastroBinding.inflate(layoutInflater)
+        val view = binding.root
+        setContentView(view)
 
-        val btn_voltar = findViewById<ImageView>(R.id.voltar_img_1)
         val btn_cadastro = findViewById<Button>(R.id.btn_cadastro)
-        val nomeEditText = findViewById<EditText>(R.id.txt_campo_nome)
-        val emailEditText = findViewById<EditText>(R.id.txt_campo_email)
-        val senhaEditText = findViewById<EditText>(R.id.txt_campo_senha)
-        val repitasenhaEditText = findViewById<EditText>(R.id.txt_repita_senha)
 
-        nomeEditText.setBackgroundTintList(ContextCompat.getColorStateList(this, R.color.cor_linha_txt))
-        emailEditText.setBackgroundTintList(ContextCompat.getColorStateList(this, R.color.cor_linha_txt))
-        senhaEditText.setBackgroundTintList(ContextCompat.getColorStateList(this, R.color.cor_linha_txt))
-        repitasenhaEditText.setBackgroundTintList(ContextCompat.getColorStateList(this, R.color.cor_linha_txt))
+        binding.txtCampoNome.setBackgroundTintList(ContextCompat.getColorStateList(this, R.color.cor_linha_txt))
+        binding.txtCampoEmail.setBackgroundTintList(ContextCompat.getColorStateList(this, R.color.cor_linha_txt))
+        binding.txtCampoSenha.setBackgroundTintList(ContextCompat.getColorStateList(this, R.color.cor_linha_txt))
+        binding.txtRepitaSenha.setBackgroundTintList(ContextCompat.getColorStateList(this, R.color.cor_linha_txt))
 
-        btn_voltar.setOnClickListener {
+        binding.voltarImg1.setOnClickListener {
             val ir_para_inicio = Intent(this, MainActivity::class.java)
             startActivity(ir_para_inicio)
         }
@@ -34,5 +42,14 @@ class PaginaDeCadastro : AppCompatActivity() {
         btn_cadastro.setOnClickListener {
 
         }
+    }
+
+    interface recebeUsuario{
+        @FormUrlEncoded
+        @POST("/autenticacao_mobile.php")
+        fun setUsuario(
+            @Field("email") email: String,
+            @Field("senha") senha: String
+        ): Call<Usuario>
     }
 }
