@@ -4,9 +4,6 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.widget.Button
-import android.widget.EditText
-import android.widget.ImageView
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import com.example.aumeow.databinding.ActivityPaginaDeCadastroBinding
@@ -32,8 +29,6 @@ class PaginaDeCadastro : AppCompatActivity() {
         binding = ActivityPaginaDeCadastroBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
-
-        val btn_cadastro = findViewById<Button>(R.id.btn_cadastro)
 
         binding.txtCampoNome.setBackgroundTintList(ContextCompat.getColorStateList(this, R.color.cor_linha_txt))
         binding.txtCampoEmail.setBackgroundTintList(ContextCompat.getColorStateList(this, R.color.cor_linha_txt))
