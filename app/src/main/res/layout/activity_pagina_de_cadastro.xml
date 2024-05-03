@@ -63,6 +63,7 @@
                 android:ems="10"
                 android:hint="Nome"
                 android:inputType="text"
+                android:textColor="@color/black"
                 android:textColorHint="@color/material_dynamic_neutral40" />
         </LinearLayout>
 
@@ -89,6 +90,7 @@
                 android:ems="10"
                 android:hint="petshop@gmail.com"
                 android:inputType="textEmailAddress"
+                android:textColor="@color/black"
                 android:textColorHint="@color/material_dynamic_neutral40" />
         </LinearLayout>
 
@@ -115,6 +117,7 @@
                 android:ems="10"
                 android:hint="senha"
                 android:inputType="text"
+                android:textColor="@color/black"
                 android:textColorHint="@color/material_dynamic_neutral40" />
         </LinearLayout>
 
@@ -141,6 +144,7 @@
                 android:ems="10"
                 android:hint="senha"
                 android:inputType="text"
+                android:textColor="@color/black"
                 android:textColorHint="@color/material_dynamic_neutral40" />
         </LinearLayout>
 
