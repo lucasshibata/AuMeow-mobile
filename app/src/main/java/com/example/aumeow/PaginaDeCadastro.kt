@@ -17,13 +17,16 @@ import retrofit2.http.FormUrlEncoded
 import retrofit2.http.POST
 
 private lateinit var binding: ActivityPaginaDeCadastroBinding
-private val retrofit = Retrofit.Builder()
-    .addConverterFactory(GsonConverterFactory.create())
-    .baseUrl("https://aumeow.000webhostapp.com")
-    .build()
-    .create(PaginaDeCadastro.recebeUsuario::class.java)
 
 class PaginaDeCadastro : AppCompatActivity() {
+
+    private val retrofit = Retrofit.Builder()
+        .addConverterFactory(GsonConverterFactory.create())
+        .baseUrl("https://aumeow.000webhostapp.com")
+        .build()
+
+    private val service = retrofit.create(ApiService::class.java)
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityPaginaDeCadastroBinding.inflate(layoutInflater)
@@ -35,44 +38,54 @@ class PaginaDeCadastro : AppCompatActivity() {
         binding.txtCampoSenha.setBackgroundTintList(ContextCompat.getColorStateList(this, R.color.cor_linha_txt))
         binding.txtRepitaSenha.setBackgroundTintList(ContextCompat.getColorStateList(this, R.color.cor_linha_txt))
 
+        // Configurações dos campos de texto
+
         binding.voltarImg1.setOnClickListener {
             val ir_para_inicio = Intent(this, MainActivity::class.java)
             startActivity(ir_para_inicio)
         }
 
         binding.btnCadastro.setOnClickListener {
-            val usuario = Usuario()
-            usuario.nome = binding.txtCampoNome.toString()
-            usuario.email = binding.txtCampoEmail.toString()
-            usuario.senha = binding.txtCampoSenha.toString()
-            chamaAPI(usuario)
+            val nome = binding.txtCampoNome.text.toString()
+            val email = binding.txtCampoEmail.text.toString()
+            val senha = binding.txtCampoSenha.text.toString()
+
+            val dados = Dados(nome, email, senha)
+            chamaAPI(dados)
         }
     }
 
-    private fun chamaAPI(usuario: Usuario){
-        retrofit.setUsuario(usuario.nome, usuario.email, usuario.senha).enqueue(object:Callback<Usuario>{
-            override fun onFailure(call: Call<Usuario>, t: Throwable) {
+    private fun chamaAPI(dados: Dados){
+        service.setUsuario(dados.nome, dados.email, dados.senha).enqueue(object: Callback<Dados> {
+            override fun onFailure(call: Call<Dados>, t: Throwable) {
                 Log.d("Erro: ", t.toString())
             }
 
-            override fun onResponse(call: Call<Usuario>, response: Response<Usuario>) {
+            override fun onResponse(call: Call<Dados>, response: Response<Dados>) {
                 if(response.isSuccessful){
                     exibeToast()
                 }
             }
         })
     }
+
     private fun exibeToast(){
         Toast.makeText(this, "Inserido com sucesso", Toast.LENGTH_LONG).show()
     }
+}
 
-    interface recebeUsuario{
-        @FormUrlEncoded
-        @POST("/insercao_mobile.php")
-        fun setUsuario(
-            @Field("nome") nome: String,
-            @Field("email") email: String,
-            @Field("senha") senha: String
-        ): Call<Usuario>
-    }
+data class Dados(
+    val nome: String,
+    val email: String,
+    val senha: String
+)
+
+interface ApiService {
+    @FormUrlEncoded
+    @POST("/insercao_mobile.php")
+    fun setUsuario(
+        @Field("nome") nome: String,
+        @Field("email") email: String,
+        @Field("senha") senha: String
+    ): Call<Dados>
 }
