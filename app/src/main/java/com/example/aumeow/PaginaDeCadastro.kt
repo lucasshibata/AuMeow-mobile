@@ -83,7 +83,7 @@ data class Dados(
 
 interface ApiService {
     @FormUrlEncoded
-    @POST("/insercao_mobile.php")
+    @POST("/arquivos_php/insercao_mobile.php")
     fun setUsuario(
         @Field("nome") nome: String,
         @Field("email") email: String,

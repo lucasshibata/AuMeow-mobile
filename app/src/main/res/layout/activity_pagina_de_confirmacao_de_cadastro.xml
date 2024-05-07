@@ -16,16 +16,24 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="Cadastro Bem Sucedido"
+        android:text="Cadastro Bem-Sucedido"
         android:textColor="@color/black"
         android:textSize="34sp" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="20dp" />
 
     <ImageView
         android:id="@+id/imageView16"
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:layout_gravity="center"
-        app:srcCompat="@android:drawable/ic_input_add" />
+        app:srcCompat="@drawable/check_img" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="20dp" />
 
     <Button
         android:id="@+id/btn_voltar_inicio"

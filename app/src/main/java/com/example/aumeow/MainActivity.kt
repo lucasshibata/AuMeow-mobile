@@ -88,7 +88,7 @@ class MainActivity : AppCompatActivity() {
     }
     interface enviaUsuario{
         @FormUrlEncoded
-        @POST("/autenticacao_mobile.php")
+        @POST("/arquivos_php/autenticacao_mobile.php")
         fun setUsuario(
             @Field("email") email: String,
             @Field("senha") senha: String
