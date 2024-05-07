@@ -3,10 +3,13 @@ package com.example.aumeow
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.ImageView
 import androidx.core.content.ContextCompat
 import com.example.aumeow.databinding.ActivityPaginaDenunciaBinding
 import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.Field
@@ -56,9 +59,28 @@ class PaginaDeDenuncia : AppCompatActivity() {
             val situacao = binding.txtSituacaoDenuncia.text.toString()
 
             val denuncia = Denuncia(nome, cpf, endereco, telefone, especie, raca, pelagem, sinais, localizacao, situacao)
-
+            chamaAPI(denuncia)
         }
 
+    }
+    private fun chamaAPI(denuncia: Denuncia){
+        service.setUsuario(denuncia.nome, denuncia.cpf, denuncia.endereco, denuncia.telefone, denuncia.especie,
+            denuncia.raca, denuncia.pelagem,denuncia.sinais, denuncia.localizacao, denuncia.situacao).enqueue(object: Callback<Denuncia> {
+            override fun onFailure(call: Call<Denuncia>, t: Throwable) {
+                Log.d("Erro: ", t.toString())
+                val ir_para_navegacao = Intent(this@PaginaDeDenuncia, PaginaDeNavegacao::class.java)
+                startActivity(ir_para_navegacao)
+                finish()
+            }
+
+            override fun onResponse(call: Call<Denuncia>, response: Response<Denuncia>) {
+                if(response.isSuccessful){
+                    val ir_para_navegacao = Intent(this@PaginaDeDenuncia, PaginaDeNavegacao::class.java)
+                    startActivity(ir_para_navegacao)
+                    finish()
+                }
+            }
+        })
     }
 }
 
@@ -77,9 +99,8 @@ data class Denuncia(
 
 interface ApiServiceDenuncia {
     @FormUrlEncoded
-    @POST("/arquivos_php/insercao_mobile.php")
+    @POST("/arquivos_php/salvar_denuncia.php")
     fun setUsuario(
-        @Field("denuncia") denuncia: String,
         @Field("nome") nome: String,
         @Field("CPF") CPF: String,
         @Field("endereco") endereco: String,
@@ -90,5 +111,5 @@ interface ApiServiceDenuncia {
         @Field("sinais_particulares") sinais_particulares: String,
         @Field("localizacao") localizacao: String,
         @Field("situacao_do_animal") situacao_do_animal: String,
-    ): Call<Dados>
+    ): Call<Denuncia>
 }

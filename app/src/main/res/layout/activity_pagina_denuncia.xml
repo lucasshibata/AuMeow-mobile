@@ -219,6 +219,7 @@
                 android:ems="10"
                 android:hint="Descreva a situação em que o animal se encontra"
                 android:inputType="text"
+                android:textColor="@color/black"
                 android:textColorHint="@color/material_dynamic_neutral40" />
 
             <Button
