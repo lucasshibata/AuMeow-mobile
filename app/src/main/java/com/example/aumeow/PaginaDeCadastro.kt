@@ -59,18 +59,19 @@ class PaginaDeCadastro : AppCompatActivity() {
         service.setUsuario(dados.nome, dados.email, dados.senha).enqueue(object: Callback<Dados> {
             override fun onFailure(call: Call<Dados>, t: Throwable) {
                 Log.d("Erro: ", t.toString())
+                val ir_para_confirmacao = Intent(this@PaginaDeCadastro, PaginaDeConfirmacaoDeCadastro::class.java)
+                startActivity(ir_para_confirmacao)
+                finish()
             }
 
             override fun onResponse(call: Call<Dados>, response: Response<Dados>) {
                 if(response.isSuccessful){
-                    exibeToast()
+                    val ir_para_confirmacao = Intent(this@PaginaDeCadastro, PaginaDeConfirmacaoDeCadastro::class.java)
+                    startActivity(ir_para_confirmacao)
+                    finish()
                 }
             }
         })
-    }
-
-    private fun exibeToast(){
-        Toast.makeText(this, "Inserido com sucesso", Toast.LENGTH_LONG).show()
     }
 }
 

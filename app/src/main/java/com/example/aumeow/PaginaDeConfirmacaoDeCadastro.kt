@@ -1,20 +1,25 @@
 package com.example.aumeow
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.aumeow.databinding.ActivityPaginaDeCadastroBinding
+import com.example.aumeow.databinding.ActivityPaginaDeConfirmacaoDeCadastroBinding
 
+private lateinit var binding: ActivityPaginaDeConfirmacaoDeCadastroBinding
 class PaginaDeConfirmacaoDeCadastro : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        setContentView(R.layout.activity_pagina_de_confirmacao_de_cadastro)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
+        binding = ActivityPaginaDeConfirmacaoDeCadastroBinding.inflate(layoutInflater)
+        val view = binding.root
+        setContentView(view)
+
+        binding.btnVoltarInicio.setOnClickListener{
+            val ir_para_inicio = Intent(this, MainActivity::class.java)
+            startActivity(ir_para_inicio)
         }
     }
 }
