@@ -4,7 +4,6 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.widget.Toast
 import androidx.core.content.ContextCompat
 import com.example.aumeow.databinding.ActivityPaginaDeCadastroBinding
 import retrofit2.Call
@@ -16,10 +15,8 @@ import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
 import retrofit2.http.POST
 
-private lateinit var binding: ActivityPaginaDeCadastroBinding
-
 class PaginaDeCadastro : AppCompatActivity() {
-
+    private lateinit var binding: ActivityPaginaDeCadastroBinding
     private val retrofit = Retrofit.Builder()
         .addConverterFactory(GsonConverterFactory.create())
         .baseUrl("https://aumeow.000webhostapp.com")

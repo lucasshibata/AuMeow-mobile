@@ -4,7 +4,6 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.widget.ImageView
 import androidx.core.content.ContextCompat
 import com.example.aumeow.databinding.ActivityPaginaDenunciaBinding
 import retrofit2.Call
@@ -16,8 +15,9 @@ import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
 import retrofit2.http.POST
 
-private lateinit var binding: ActivityPaginaDenunciaBinding
+
 class PaginaDeDenuncia : AppCompatActivity() {
+    private lateinit var binding: ActivityPaginaDenunciaBinding
     private val retrofit = Retrofit.Builder()
         .addConverterFactory(GsonConverterFactory.create())
         .baseUrl("https://aumeow.000webhostapp.com")
@@ -42,8 +42,8 @@ class PaginaDeDenuncia : AppCompatActivity() {
         binding.txtSituacaoDenuncia.setBackgroundTintList(ContextCompat.getColorStateList(this, R.color.cor_linha_txt))
 
         binding.voltarImg4.setOnClickListener {
-            val ir_para_navegacao = Intent(this, PaginaDeNavegacao::class.java)
-            startActivity(ir_para_navegacao)
+            val irParaNavegacao = Intent(this, PaginaDeNavegacao::class.java)
+            startActivity(irParaNavegacao)
         }
 
         binding.btnEnviarDenuncia.setOnClickListener{
@@ -68,15 +68,15 @@ class PaginaDeDenuncia : AppCompatActivity() {
             denuncia.raca, denuncia.pelagem,denuncia.sinais, denuncia.localizacao, denuncia.situacao).enqueue(object: Callback<Denuncia> {
             override fun onFailure(call: Call<Denuncia>, t: Throwable) {
                 Log.d("Erro: ", t.toString())
-                val ir_para_navegacao = Intent(this@PaginaDeDenuncia, PaginaDeNavegacao::class.java)
-                startActivity(ir_para_navegacao)
+                val irParaNavegacao = Intent(this@PaginaDeDenuncia, PaginaDeNavegacao::class.java)
+                startActivity(irParaNavegacao)
                 finish()
             }
 
             override fun onResponse(call: Call<Denuncia>, response: Response<Denuncia>) {
                 if(response.isSuccessful){
-                    val ir_para_navegacao = Intent(this@PaginaDeDenuncia, PaginaDeNavegacao::class.java)
-                    startActivity(ir_para_navegacao)
+                    val irParaNavegacao = Intent(this@PaginaDeDenuncia, PaginaDeNavegacao::class.java)
+                    startActivity(irParaNavegacao)
                     finish()
                 }
             }
@@ -102,14 +102,14 @@ interface ApiServiceDenuncia {
     @POST("/arquivos_php/salvar_denuncia.php")
     fun setUsuario(
         @Field("nome") nome: String,
-        @Field("CPF") CPF: String,
+        @Field("CPF") cpf: String,
         @Field("endereco") endereco: String,
         @Field("telefone") telefone: String,
         @Field("especie") especie: String,
         @Field("raca") raca: String,
         @Field("pelagem") pelagem: String,
-        @Field("sinais_particulares") sinais_particulares: String,
+        @Field("sinais_particulares") sinaisParticulares: String,
         @Field("localizacao") localizacao: String,
-        @Field("situacao_do_animal") situacao_do_animal: String,
+        @Field("situacao_do_animal") situacaoDoAnimal: String,
     ): Call<Denuncia>
 }
