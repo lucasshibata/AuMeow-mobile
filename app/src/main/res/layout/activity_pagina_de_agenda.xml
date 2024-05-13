@@ -37,6 +37,18 @@
         android:layout_gravity="center"
         android:background="@color/white"
         tools:layout_editor_absoluteX="26dp"
-        tools:layout_editor_absoluteY="145dp" />
+        tools:layout_editor_absoluteY="145dp"
+        />
+
+    <TextView
+        android:id="@+id/teste_texto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textColor="@color/red"
+        android:textColorHighlight="@color/design_default_color_primary_dark"
+        android:textColorHint="@color/cor_linha_txt"
+        android:textColorLink="@color/design_default_color_secondary" />
 
 </LinearLayout>
