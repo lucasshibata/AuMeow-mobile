@@ -3,19 +3,20 @@ package com.example.aumeow
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.widget.Adapter
-import android.widget.ImageView
-import android.widget.TextView
-import androidx.appcompat.view.menu.MenuView.ItemView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.aumeow.adapter.AdapterClass
 import com.example.aumeow.databinding.ActivityPaginaBanhoEtosaBinding
+import com.example.aumeow.domain.DataClass
 
 class PaginaDeBanhoETosa : AppCompatActivity() {
     lateinit var binding: ActivityPaginaBanhoEtosaBinding
-    var arraylist = ArrayList<String>()
+
+    private lateinit var recyclerView: RecyclerView
+    private  lateinit var  dataList: ArrayList<DataClass>
+    lateinit var imageList: Array<Int>
+    lateinit var nomeList: Array<String>
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityPaginaBanhoEtosaBinding.inflate(layoutInflater)
@@ -26,12 +27,29 @@ class PaginaDeBanhoETosa : AppCompatActivity() {
             startActivity(ir_para_navegacao)
         }
 
-        binding.listaLojas.layoutManager = LinearLayoutManager(this)
+        imageList = arrayOf(
+            R.drawable.fred_img_exemple,
+            R.drawable.logo_img,
+            R.drawable.paw_img
+        )
+        nomeList = arrayOf(
+            "fred imagem",
+            "imagem da logo",
+            "imagem de patinha"
+        )
+
+        recyclerView = binding.listaLojas
+        recyclerView.layoutManager = LinearLayoutManager(this)
+        recyclerView.setHasFixedSize(true)
+
+        dataList = arrayListOf<DataClass>()
+        getData()
+    }
+    private fun getData(){
+        for(i in imageList.indices){
+            val dataClass = DataClass(imageList[i], nomeList[i])
+            dataList.add(dataClass)
+        }
+        recyclerView.adapter = AdapterClass(dataList)
     }
 }
-
-//class Adapter (val arrayList: ArrayList<String>):RecyclerView<Adapter.ViewHolder>{
-//    class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
-//
-//    }
-//}
