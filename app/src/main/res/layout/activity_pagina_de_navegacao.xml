@@ -244,29 +244,6 @@
                     android:layout_weight="1" />
 
                 <Button
-                    android:id="@+id/agenda_btn"
-                    android:layout_width="180dp"
-                    android:layout_height="140dp"
-                    android:backgroundTint="@color/pink_btn"
-                    android:fontFamily="@font/inter"
-                    android:gravity="bottom|center"
-                    android:text="Agenda"
-                    android:textAlignment="gravity"
-                    android:textColor="@color/black"
-                    android:textSize="20sp"
-                    android:textStyle="bold"
-                    app:cornerRadius="15dp"
-                    app:icon="@drawable/agenda_img"
-                    app:iconGravity="top"
-                    app:iconSize="80dp"
-                    app:iconTint="@color/black" />
-
-                <Space
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1" />
-
-                <Button
                     android:id="@+id/feedback_btn"
                     android:layout_width="180dp"
                     android:layout_height="140dp"
